@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
 import Search from "./components/Search";
+import Translate from "./components/Translate";
 
 const items = [
     {
@@ -17,15 +19,32 @@ const items = [
     }
 ];
 
-class App extends React.Component {
-    render(){
-        return (
-            <div className="ui container">
-                {/* <Accordion items={items} /> */}
-                <Search />
-            </div>
-        );
+const options = [
+    {
+        label: 'The color red',
+        value: 'red'
+    },
+    {
+        label: 'The color blue',
+        value: 'blue'
+    },
+    {
+        label: 'The color green',
+        value: 'green'
     }
-}
+];
 
-export default App;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+    const [selected, setSelected] = useState(options[0]);
+
+    return (
+        <div className="ui container">
+            {/* <Accordion items={items} /> */}
+            {/* <Search /> */}
+            {/* <Dropdown options={options} selected={selected} onSelectedChange={setSelected} type='color'/> */}
+            {/* <span style={{ color: selected.value}}> The text is {selected.value}</span> */}
+            <Translate />
+        </div>
+    );
+};
